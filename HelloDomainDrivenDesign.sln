@@ -3,12 +3,78 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{D33B3434-573D-4C30-8F43-35F032C5DB5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A7661248-3D92-471F-85CE-4436B0AA7E7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{5CA23050-36FF-43EA-B71B-32BA18E40710}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C3930B77-53A3-4A34-860F-247F1A47BD3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F32F23A0-9309-4D2E-BDCD-1717888B6B40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.Core", "TeslaOrder.Core\TeslaOrder.Core.csproj", "{09C10501-A462-4F73-9312-09F36CD447DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.Domain.Abstractions", "TeslaOrder.Domain.Abstractions\TeslaOrder.Domain.Abstractions.csproj", "{9A538E1C-2A04-47BA-AE82-F7E05CEB5ACC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.Infrastructure.Core", "TeslaOrder.Infrastructure.Core\TeslaOrder.Infrastructure.Core.csproj", "{CA1A1A6A-7718-4958-86F3-E2C96283765E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.Domain", "TeslaOrder.Domain\TeslaOrder.Domain.csproj", "{FA1091CE-0DD3-47EA-9173-F8344A08E44F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.Infrastruture", "TeslaOrder.Infrastruture\TeslaOrder.Infrastruture.csproj", "{5EA7BA9B-A288-4AD9-AF98-EDFC70C3A462}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.API", "TeslaOrder.API\TeslaOrder.API.csproj", "{F12655CD-A347-4D73-AA9F-3979C5B708C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.BackgroudTasks", "TeslaOrder.BackgroudTasks\TeslaOrder.BackgroudTasks.csproj", "{DA1A7563-C08E-479B-A048-2AB4C3E93FD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09C10501-A462-4F73-9312-09F36CD447DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C10501-A462-4F73-9312-09F36CD447DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C10501-A462-4F73-9312-09F36CD447DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C10501-A462-4F73-9312-09F36CD447DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A538E1C-2A04-47BA-AE82-F7E05CEB5ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A538E1C-2A04-47BA-AE82-F7E05CEB5ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A538E1C-2A04-47BA-AE82-F7E05CEB5ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A538E1C-2A04-47BA-AE82-F7E05CEB5ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA1A1A6A-7718-4958-86F3-E2C96283765E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA1A1A6A-7718-4958-86F3-E2C96283765E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA1A1A6A-7718-4958-86F3-E2C96283765E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA1A1A6A-7718-4958-86F3-E2C96283765E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA1091CE-0DD3-47EA-9173-F8344A08E44F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA1091CE-0DD3-47EA-9173-F8344A08E44F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA1091CE-0DD3-47EA-9173-F8344A08E44F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA1091CE-0DD3-47EA-9173-F8344A08E44F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA7BA9B-A288-4AD9-AF98-EDFC70C3A462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA7BA9B-A288-4AD9-AF98-EDFC70C3A462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA7BA9B-A288-4AD9-AF98-EDFC70C3A462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA7BA9B-A288-4AD9-AF98-EDFC70C3A462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12655CD-A347-4D73-AA9F-3979C5B708C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12655CD-A347-4D73-AA9F-3979C5B708C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12655CD-A347-4D73-AA9F-3979C5B708C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12655CD-A347-4D73-AA9F-3979C5B708C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1A7563-C08E-479B-A048-2AB4C3E93FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1A7563-C08E-479B-A048-2AB4C3E93FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1A7563-C08E-479B-A048-2AB4C3E93FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1A7563-C08E-479B-A048-2AB4C3E93FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{09C10501-A462-4F73-9312-09F36CD447DC} = {C3930B77-53A3-4A34-860F-247F1A47BD3C}
+		{9A538E1C-2A04-47BA-AE82-F7E05CEB5ACC} = {C3930B77-53A3-4A34-860F-247F1A47BD3C}
+		{CA1A1A6A-7718-4958-86F3-E2C96283765E} = {C3930B77-53A3-4A34-860F-247F1A47BD3C}
+		{FA1091CE-0DD3-47EA-9173-F8344A08E44F} = {A7661248-3D92-471F-85CE-4436B0AA7E7F}
+		{5EA7BA9B-A288-4AD9-AF98-EDFC70C3A462} = {5CA23050-36FF-43EA-B71B-32BA18E40710}
+		{F12655CD-A347-4D73-AA9F-3979C5B708C8} = {D33B3434-573D-4C30-8F43-35F032C5DB5D}
+		{DA1A7563-C08E-479B-A048-2AB4C3E93FD4} = {D33B3434-573D-4C30-8F43-35F032C5DB5D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D590680-C8F6-4694-B480-B0A01E2A57D8}
 	EndGlobalSection
 EndGlobal
