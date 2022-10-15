@@ -7,7 +7,7 @@ using TeslaOrder.Domain.OrderAggregate;
 
 namespace TeslaOrder.Infrastruture.EntityConfigurations
 {
-    class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
+    public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {

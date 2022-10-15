@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TeslaOrder.Domain.Abstractions\TeslaOrder.Domain.Abstractions.csproj" />
     <ProjectReference Include="..\TeslaOrder.Domain\TeslaOrder.Domain.csproj" />
     <ProjectReference Include="..\TeslaOrder.Infrastructure.Core\TeslaOrder.Infrastructure.Core.csproj" />
   </ItemGroup>
