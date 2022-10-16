@@ -1,5 +1,4 @@
-﻿using DotNetCore.CAP;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ namespace TeslaOrder.Infrastruture
 {
     public class OrderingContext : EFContext
     {
-        public OrderingContext(DbContextOptions options, IMediator mediator, ICapPublisher capBus) : base(options, mediator, capBus)
+        public OrderingContext(DbContextOptions options, IMediator mediator) : base(options, mediator)
         {
         }
 

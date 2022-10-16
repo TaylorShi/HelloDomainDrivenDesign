@@ -6,10 +6,14 @@ using TeslaOrder.Infrastructure.Core;
 
 namespace TeslaOrder.Infrastruture.Repositories
 {
-    public class OrderRepository : Repository<Order, long, OrderingContext>, IOrderRepository
+    /// <summary>
+    /// 订单仓储
+    /// </summary>
+    public class OrderRepository : Repository<Order, long, DomainContext>, IOrderRepository
     {
-        public OrderRepository(OrderingContext context) : base(context)
+        public OrderRepository(DomainContext context) : base(context)
         {
+
         }
     }
 }

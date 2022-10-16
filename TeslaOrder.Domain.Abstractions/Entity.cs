@@ -5,19 +5,20 @@ using System.Text;
 
 namespace TeslaOrder.Domain.Abstractions
 {
+    /// <summary>
+    /// 实体抽象类
+    /// </summary>
     public abstract class Entity : IEntity
     {
         public abstract object[] GetKeys();
-
 
         public override string ToString()
         {
             return $"[Entity: {GetType().Name}] Keys = {string.Join(",", GetKeys())}";
         }
 
+        #region 领域事件
 
-
-        #region 
         private List<IDomainEvent> _domainEvents;
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents?.AsReadOnly();
 
@@ -36,9 +37,14 @@ namespace TeslaOrder.Domain.Abstractions
         {
             _domainEvents?.Clear();
         }
+
         #endregion
     }
 
+    /// <summary>
+    /// 实体抽象类(泛型)
+    /// </summary>
+    /// <typeparam name="TKey"></typeparam>
     public abstract class Entity<TKey> : Entity, IEntity<TKey>
     {
         int? _requestedHashCode;
@@ -80,9 +86,10 @@ namespace TeslaOrder.Domain.Abstractions
                 return base.GetHashCode();
         }
 
-
-
-        //表示对象是否为全新创建的，未持久化的
+        /// <summary>
+        /// 表示对象是否为全新创建的，未持久化的
+        /// </summary>
+        /// <returns></returns>
         public bool IsTransient()
         {
             return EqualityComparer<TKey>.Default.Equals(Id, default);
@@ -92,7 +99,6 @@ namespace TeslaOrder.Domain.Abstractions
         {
             return $"[Entity: {GetType().Name}] Id = {Id}";
         }
-
 
         public static bool operator ==(Entity<TKey> left, Entity<TKey> right)
         {

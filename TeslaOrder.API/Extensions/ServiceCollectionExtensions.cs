@@ -15,14 +15,15 @@ namespace TeslaOrder.API.Extensions
 
         public static IServiceCollection AddMediatRServices(this IServiceCollection services)
         {
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(OrderingContextTransactionBehavior<,>));
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(OrderingContextTransactionBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(DomainContextTransactionBehavior<,>));
             return services.AddMediatR(typeof(Order).Assembly, typeof(Program).Assembly);
         }
 
 
         public static IServiceCollection AddDomainContext(this IServiceCollection services, Action<DbContextOptionsBuilder> optionsAction)
         {
-            return services.AddDbContext<OrderingContext>(optionsAction);
+            return services.AddDbContext<DomainContext>(optionsAction);
         }
 
         public static IServiceCollection AddInMemoryDomainContext(this IServiceCollection services)
@@ -42,26 +43,27 @@ namespace TeslaOrder.API.Extensions
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
 
 
 
-        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddTransient<ISubscriberService, SubscriberService>();
-            services.AddCap(options =>
-            {
-                options.UseEntityFramework<OrderingContext>();
+        //public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
+        //{
+        //    services.AddTransient<ISubscriberService, SubscriberService>();
+        //    services.AddCap(options =>
+        //    {
+        //        options.UseEntityFramework<OrderingContext>();
 
-                options.UseRabbitMQ(options =>
-                {
-                    configuration.GetSection("RabbitMQ").Bind(options);
-                });
-                //options.UseDashboard();
-            });
+        //        options.UseRabbitMQ(options =>
+        //        {
+        //            configuration.GetSection("RabbitMQ").Bind(options);
+        //        });
+        //        //options.UseDashboard();
+        //    });
 
-            return services;
-        }
+        //    return services;
+        //}
     }
 }

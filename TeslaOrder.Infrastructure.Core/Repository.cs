@@ -7,6 +7,11 @@ using TeslaOrder.Domain.Abstractions;
 
 namespace TeslaOrder.Infrastructure.Core
 {
+    /// <summary>
+    /// 实体抽象类
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TDbContext"></typeparam>
     public abstract class Repository<TEntity, TDbContext> : IRepository<TEntity> where TEntity : Entity, IAggregateRoot where TDbContext : EFContext
     {
         protected virtual TDbContext DbContext { get; set; }
@@ -15,6 +20,7 @@ namespace TeslaOrder.Infrastructure.Core
         {
             this.DbContext = context;
         }
+
         public virtual IUnitOfWork UnitOfWork => DbContext;
 
         public virtual TEntity Add(TEntity entity)
@@ -49,6 +55,12 @@ namespace TeslaOrder.Infrastructure.Core
         }
     }
 
+    /// <summary>
+    /// 实体抽象类(带主键)
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="TDbContext"></typeparam>
     public abstract class Repository<TEntity, TKey, TDbContext> : Repository<TEntity, TDbContext>, IRepository<TEntity, TKey> where TEntity : Entity<TKey>, IAggregateRoot where TDbContext : EFContext
     {
         public Repository(TDbContext context) : base(context)

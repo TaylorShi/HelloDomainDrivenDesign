@@ -1,5 +1,4 @@
-﻿using DotNetCore.CAP;
-using MediatR;
+﻿using MediatR;
 using System.Threading.Tasks;
 using System.Threading;
 using TeslaOrder.Domain.OrderAggregate;
@@ -10,11 +9,9 @@ namespace TeslaOrder.API.Application.Commands
     public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, long>
     {
         IOrderRepository _orderRepository;
-        ICapPublisher _capPublisher;
-        public CreateOrderCommandHandler(IOrderRepository orderRepository, ICapPublisher capPublisher)
+        public CreateOrderCommandHandler(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
-            _capPublisher = capPublisher;
         }
 
 

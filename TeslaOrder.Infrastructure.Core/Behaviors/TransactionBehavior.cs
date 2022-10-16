@@ -7,10 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using TeslaOrder.Infrastructure.Core.Extensions;
-using DotNetCore.CAP;
 
 namespace TeslaOrder.Infrastructure.Core.Behaviors
 {
+    /// <summary>
+    /// 事务行为管理类
+    /// </summary>
+    /// <typeparam name="TDbContext"></typeparam>
+    /// <typeparam name="TRequest"></typeparam>
+    /// <typeparam name="TResponse"></typeparam>
     public class TransactionBehavior<TDbContext, TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TDbContext : EFContext
     {
         ILogger _logger;
@@ -29,6 +34,7 @@ namespace TeslaOrder.Infrastructure.Core.Behaviors
 
             try
             {
+                // 如果当前开启了事务，那么就继续后面的动作
                 if (_dbContext.HasActiveTransaction)
                 {
                     return await next();

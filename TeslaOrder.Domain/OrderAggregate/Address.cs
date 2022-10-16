@@ -5,6 +5,9 @@ using TeslaOrder.Domain.Abstractions;
 
 namespace TeslaOrder.Domain.OrderAggregate
 {
+    /// <summary>
+    /// 收获地址
+    /// </summary>
     public class Address : ValueObject
     {
         public string Street { get; private set; }

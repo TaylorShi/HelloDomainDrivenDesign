@@ -5,24 +5,30 @@ using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
-using DotNetCore.CAP;
 using Microsoft.EntityFrameworkCore.Storage;
 using TeslaOrder.Infrastructure.Core.Extensions;
 
 namespace TeslaOrder.Infrastructure.Core
 {
+    /// <summary>
+    /// EFContext
+    /// </summary>
     public class EFContext : DbContext, IUnitOfWork, ITransaction
     {
         protected IMediator _mediator;
-        ICapPublisher _capBus;
 
-        public EFContext(DbContextOptions options, IMediator mediator, ICapPublisher capBus) : base(options)
+        public EFContext(DbContextOptions options, IMediator mediator) : base(options)
         {
             _mediator = mediator;
-            _capBus = capBus;
         }
 
         #region IUnitOfWork
+
+        /// <summary>
+        /// 保存实体
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
         {
             var result = await base.SaveChangesAsync(cancellationToken);
@@ -34,15 +40,36 @@ namespace TeslaOrder.Infrastructure.Core
         #region ITransaction
 
         private IDbContextTransaction _currentTransaction;
+
+        /// <summary>
+        /// 获取当前事务
+        /// </summary>
+        /// <returns></returns>
         public IDbContextTransaction GetCurrentTransaction() => _currentTransaction;
+
+        /// <summary>
+        /// 判断当前事务是否开启
+        /// </summary>
         public bool HasActiveTransaction => _currentTransaction != null;
+
+        /// <summary>
+        /// 开启事务
+        /// </summary>
+        /// <returns></returns>
         public Task<IDbContextTransaction> BeginTransactionAsync()
         {
             if (_currentTransaction != null) return null;
-            _currentTransaction = Database.BeginTransaction(_capBus, autoCommit: false);
+            _currentTransaction = Database.BeginTransaction();
             return Task.FromResult(_currentTransaction);
         }
 
+        /// <summary>
+        /// 提交事务
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
         public async Task CommitTransactionAsync(IDbContextTransaction transaction)
         {
             if (transaction == null) throw new ArgumentNullException(nameof(transaction));
@@ -68,6 +95,9 @@ namespace TeslaOrder.Infrastructure.Core
             }
         }
 
+        /// <summary>
+        /// 事务回滚
+        /// </summary>
         public void RollbackTransaction()
         {
             try
@@ -83,7 +113,6 @@ namespace TeslaOrder.Infrastructure.Core
                 }
             }
         }
-
 
         #endregion
     }

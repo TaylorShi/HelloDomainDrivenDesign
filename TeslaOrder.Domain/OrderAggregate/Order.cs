@@ -7,6 +7,9 @@ using TeslaOrder.Domain.Events;
 
 namespace TeslaOrder.Domain.OrderAggregate
 {
+    /// <summary>
+    /// 订单实体类
+    /// </summary>
     public class Order : Entity<long>, IAggregateRoot
     {
         public string UserId { get; private set; }
@@ -14,7 +17,9 @@ namespace TeslaOrder.Domain.OrderAggregate
         public string UserName { get; private set; }
 
         public Address Address { get; private set; }
+
         public int ItemCount { get; private set; }
+
         protected Order()
         { }
 
@@ -34,8 +39,5 @@ namespace TeslaOrder.Domain.OrderAggregate
             this.Address = address;
             //this.AddDomainEvent(new OrderAddressChangedDomainEvent(this));
         }
-
-
-
     }
 }

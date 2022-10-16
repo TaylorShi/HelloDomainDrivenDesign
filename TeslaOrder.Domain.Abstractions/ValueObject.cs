@@ -5,6 +5,9 @@ using System.Text;
 
 namespace TeslaOrder.Domain.Abstractions
 {
+    /// <summary>
+    /// 值对象
+    /// </summary>
     public abstract class ValueObject
     {
         protected static bool EqualOperator(ValueObject left, ValueObject right)

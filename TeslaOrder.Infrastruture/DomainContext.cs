@@ -1,9 +1,5 @@
-﻿using DotNetCore.CAP;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TeslaOrder.Domain.OrderAggregate;
 using TeslaOrder.Domain.UserAggregate;
 using TeslaOrder.Infrastructure.Core;
@@ -11,9 +7,12 @@ using TeslaOrder.Infrastruture.EntityConfigurations;
 
 namespace TeslaOrder.Infrastruture
 {
+    /// <summary>
+    /// 领域上下文
+    /// </summary>
     public class DomainContext : EFContext
     {
-        public DomainContext(DbContextOptions options, IMediator mediator, ICapPublisher capBus) : base(options, mediator, capBus)
+        public DomainContext(DbContextOptions options, IMediator mediator) : base(options, mediator)
         {
         }
 
