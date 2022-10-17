@@ -23,6 +23,13 @@ namespace TeslaOrder.Domain.OrderAggregate
         protected Order()
         { }
 
+        /// <summary>
+        /// 创建订单
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="userName"></param>
+        /// <param name="itemCount"></param>
+        /// <param name="address"></param>
         public Order(string userId, string userName, int itemCount, Address address)
         {
             this.UserId = userId;
@@ -33,11 +40,14 @@ namespace TeslaOrder.Domain.OrderAggregate
             this.AddDomainEvent(new OrderCreatedDomainEvent(this));
         }
 
-
-        public void ChangeAddress(Address address)
+        /// <summary>
+        /// 修改订单地址
+        /// </summary>
+        /// <param name="address"></param>
+        public void ChangeOrderAddress(Address address)
         {
             this.Address = address;
-            //this.AddDomainEvent(new OrderAddressChangedDomainEvent(this));
+            this.AddDomainEvent(new OrderAddressChangedDomainEvent(this.Address));
         }
     }
 }

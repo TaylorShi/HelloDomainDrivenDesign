@@ -19,20 +19,38 @@ namespace TeslaOrder.Domain.Abstractions
 
         #region 领域事件
 
+        /// <summary>
+        /// 领域事件列表
+        /// </summary>
         private List<IDomainEvent> _domainEvents;
+
+        /// <summary>
+        /// 获取领域事件列表
+        /// </summary>
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents?.AsReadOnly();
 
+        /// <summary>
+        /// 添加领域事件
+        /// </summary>
+        /// <param name="eventItem"></param>
         public void AddDomainEvent(IDomainEvent eventItem)
         {
             _domainEvents = _domainEvents ?? new List<IDomainEvent>();
             _domainEvents.Add(eventItem);
         }
 
+        /// <summary>
+        /// 移除领域事件
+        /// </summary>
+        /// <param name="eventItem"></param>
         public void RemoveDomainEvent(IDomainEvent eventItem)
         {
             _domainEvents?.Remove(eventItem);
         }
 
+        /// <summary>
+        /// 清除领域事件
+        /// </summary>
         public void ClearDomainEvents()
         {
             _domainEvents?.Clear();

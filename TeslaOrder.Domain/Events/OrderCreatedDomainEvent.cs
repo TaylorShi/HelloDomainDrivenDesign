@@ -6,6 +6,9 @@ using TeslaOrder.Domain.OrderAggregate;
 
 namespace TeslaOrder.Domain.Events
 {
+    /// <summary>
+    /// 订单创建领域事件
+    /// </summary>
     public class OrderCreatedDomainEvent : IDomainEvent
     {
         public Order Order { get; private set; }

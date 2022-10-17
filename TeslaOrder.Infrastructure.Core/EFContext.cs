@@ -22,6 +22,8 @@ namespace TeslaOrder.Infrastructure.Core
             _mediator = mediator;
         }
 
+
+
         #region IUnitOfWork
 
         /// <summary>
