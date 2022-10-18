@@ -33,7 +33,7 @@ namespace TeslaOrder.API.Application.Commands
         /// <returns></returns>
         public async Task<long> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
-            var address = new Address("沙头街道", "深圳", "518048");
+            var address = new Address("广东省","沙头街道", "深圳", "518048");
             var order = new Order("414675056", "taylorshi", request.ItemCount, address);
 
             _orderRepository.Add(order);

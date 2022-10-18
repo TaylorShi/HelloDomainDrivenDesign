@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore.Storage;
 using TeslaOrder.Infrastructure.Core.Extensions;
+using DotNetCore.CAP;
 
 namespace TeslaOrder.Infrastructure.Core
 {
@@ -16,13 +15,12 @@ namespace TeslaOrder.Infrastructure.Core
     public class EFContext : DbContext, IUnitOfWork, ITransaction
     {
         protected IMediator _mediator;
-
-        public EFContext(DbContextOptions options, IMediator mediator) : base(options)
+        protected ICapPublisher _capPublisher;
+        public EFContext(DbContextOptions options, IMediator mediator, ICapPublisher capPublisher) : base(options)
         {
             _mediator = mediator;
+            _capPublisher = capPublisher;
         }
-
-
 
         #region IUnitOfWork
 
@@ -61,7 +59,8 @@ namespace TeslaOrder.Infrastructure.Core
         public Task<IDbContextTransaction> BeginTransactionAsync()
         {
             if (_currentTransaction != null) return null;
-            _currentTransaction = Database.BeginTransaction();
+
+            _currentTransaction = Database.BeginTransaction(_capPublisher, autoCommit: true);
             return Task.FromResult(_currentTransaction);
         }
 

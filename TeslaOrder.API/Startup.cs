@@ -26,9 +26,6 @@ namespace TeslaOrder.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddMediatRServices();
-            services.AddMySqlDomainContext(Configuration.GetValue<string>("Mysql"));
-            services.AddRepositories();
 
             services.AddSwaggerGen(swaggerGenOptions =>
             {
@@ -46,6 +43,11 @@ namespace TeslaOrder.API
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 swaggerGenOptions.IncludeXmlComments(xmlPath);
             });
+
+            services.AddMediatRServices();
+            services.AddMySqlDomainContext(Configuration.GetValue<string>("Mysql"));
+            services.AddRepositories();
+            services.AddEventBus(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

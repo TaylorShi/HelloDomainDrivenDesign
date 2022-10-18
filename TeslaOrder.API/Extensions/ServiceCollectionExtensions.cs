@@ -26,10 +26,10 @@ namespace TeslaOrder.API.Extensions
             return services.AddDbContext<DomainContext>(optionsAction);
         }
 
-        public static IServiceCollection AddInMemoryDomainContext(this IServiceCollection services)
-        {
-            return services.AddDomainContext(builder => builder.UseInMemoryDatabase("domanContextDatabase"));
-        }
+        //public static IServiceCollection AddInMemoryDomainContext(this IServiceCollection services)
+        //{
+        //    return services.AddDomainContext(builder => builder.UseInMemoryDatabase("domanContextDatabase"));
+        //}
 
         public static IServiceCollection AddMySqlDomainContext(this IServiceCollection services, string connectionString)
         {
@@ -47,23 +47,34 @@ namespace TeslaOrder.API.Extensions
             return services;
         }
 
+        /// <summary>
+        /// 添加集成事件总线
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
+        {
+            // 先将订阅服务注入进来
+            services.AddTransient<ISubscriberService, SubscriberService>();
 
+            // 添加CAP相关的服务和配置
+            services.AddCap(options =>
+            {
+                // 告诉框架我们是要针对DomainContext来实现我们的EventBus，EventBus和我们数据库共享数据库连接
+                options.UseEntityFramework<DomainContext>();
 
-        //public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
-        //{
-        //    services.AddTransient<ISubscriberService, SubscriberService>();
-        //    services.AddCap(options =>
-        //    {
-        //        options.UseEntityFramework<OrderingContext>();
+                options.UseMySql(configuration.GetValue<string>("Mysql"));
 
-        //        options.UseRabbitMQ(options =>
-        //        {
-        //            configuration.GetSection("RabbitMQ").Bind(options);
-        //        });
-        //        //options.UseDashboard();
-        //    });
+                // 使用RabbitMQ来作为EventBus的消息队列的存储
+                options.UseRabbitMQ(options =>
+                {
+                    configuration.GetSection("RabbitMQ").Bind(options);
+                });
+                //options.UseDashboard();
+            });
 
-        //    return services;
-        //}
+            return services;
+        }
     }
 }

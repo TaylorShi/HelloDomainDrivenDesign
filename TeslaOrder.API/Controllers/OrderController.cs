@@ -50,14 +50,14 @@ namespace TeslaOrder.API.Controllers
 
         #region 不建议的写法
         //[HttpPost]
-        //public Task<long> CreateOrder([FromBody]CreateOrderVeiwModel viewModel)
+        //public Task<long> CreateOrder([FromBody] CreateOrderVeiwModel viewModel)
         //{
         //    var model = viewModel.ToModel();
         //    return await orderService.CreateOrder(model);
         //}
 
 
-        //class OrderService:IOrderService
+        //class OrderService : IOrderService
         //{
         //    public long CreateOrder(CreateOrderModel model)
         //    {

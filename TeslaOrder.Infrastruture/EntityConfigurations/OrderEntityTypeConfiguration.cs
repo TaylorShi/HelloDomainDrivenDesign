@@ -18,9 +18,10 @@ namespace TeslaOrder.Infrastruture.EntityConfigurations
             builder.OwnsOne(o => o.Address, a =>
             {
                 a.WithOwner();
-                a.Property(p => p.City).HasMaxLength(20);
-                a.Property(p => p.Street).HasMaxLength(50);
-                a.Property(p => p.ZipCode).HasMaxLength(10);
+                a.Property(p => p.Province).HasColumnName("Province").HasMaxLength(50);
+                a.Property(p => p.City).HasColumnName("City").HasMaxLength(30);
+                a.Property(p => p.Street).HasColumnName("Street").HasMaxLength(50);
+                a.Property(p => p.ZipCode).HasColumnName("ZipCode").HasMaxLength(10);
             });
         }
     }
