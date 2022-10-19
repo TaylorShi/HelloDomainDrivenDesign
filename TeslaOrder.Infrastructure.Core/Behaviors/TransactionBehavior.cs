@@ -20,13 +20,20 @@ namespace TeslaOrder.Infrastructure.Core.Behaviors
     {
         ILogger _logger;
         TDbContext _dbContext;
+
         public TransactionBehavior(TDbContext dbContext, ILogger logger)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-
+        /// <summary>
+        /// 处理程序
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="next"></param>
+        /// <returns></returns>
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             var response = default(TResponse);

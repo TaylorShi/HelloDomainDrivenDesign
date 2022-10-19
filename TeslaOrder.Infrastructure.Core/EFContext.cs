@@ -35,6 +35,7 @@ namespace TeslaOrder.Infrastructure.Core
             await _mediator.DispatchDomainEventsAsync(this);
             return true;
         }
+
         #endregion
 
         #region ITransaction

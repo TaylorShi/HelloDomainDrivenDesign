@@ -27,7 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeslaOrder.API", "TeslaOrde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeslaOrder.BackgroudTasks", "TeslaOrder.BackgroudTasks\TeslaOrder.BackgroudTasks.csproj", "{DA1A7563-C08E-479B-A048-2AB4C3E93FD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaMediatR.API", "TeslaMediatR.API\TeslaMediatR.API.csproj", "{B9A897C0-7FCC-4243-A114-9088A9BB806D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeslaMediatR.API", "TeslaMediatR.API\TeslaMediatR.API.csproj", "{B9A897C0-7FCC-4243-A114-9088A9BB806D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.MediatorCQRS", "TeslaOrder.MediatorConsole\TeslaOrder.MediatorCQRS.csproj", "{3C2210FD-E135-404C-B94E-85EF024EFF9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.MediatorEvent", "TeslaOrder.MediatorEvent\TeslaOrder.MediatorEvent.csproj", "{DF4EC7D8-4DD5-43BD-A60D-F26056D3BF86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +71,14 @@ Global
 		{B9A897C0-7FCC-4243-A114-9088A9BB806D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9A897C0-7FCC-4243-A114-9088A9BB806D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9A897C0-7FCC-4243-A114-9088A9BB806D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C2210FD-E135-404C-B94E-85EF024EFF9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C2210FD-E135-404C-B94E-85EF024EFF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C2210FD-E135-404C-B94E-85EF024EFF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C2210FD-E135-404C-B94E-85EF024EFF9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF4EC7D8-4DD5-43BD-A60D-F26056D3BF86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF4EC7D8-4DD5-43BD-A60D-F26056D3BF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF4EC7D8-4DD5-43BD-A60D-F26056D3BF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF4EC7D8-4DD5-43BD-A60D-F26056D3BF86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +92,8 @@ Global
 		{F12655CD-A347-4D73-AA9F-3979C5B708C8} = {D33B3434-573D-4C30-8F43-35F032C5DB5D}
 		{DA1A7563-C08E-479B-A048-2AB4C3E93FD4} = {D33B3434-573D-4C30-8F43-35F032C5DB5D}
 		{B9A897C0-7FCC-4243-A114-9088A9BB806D} = {D33B3434-573D-4C30-8F43-35F032C5DB5D}
+		{3C2210FD-E135-404C-B94E-85EF024EFF9F} = {D33B3434-573D-4C30-8F43-35F032C5DB5D}
+		{DF4EC7D8-4DD5-43BD-A60D-F26056D3BF86} = {D33B3434-573D-4C30-8F43-35F032C5DB5D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D590680-C8F6-4694-B480-B0A01E2A57D8}

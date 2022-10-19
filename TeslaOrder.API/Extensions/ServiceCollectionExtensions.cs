@@ -13,9 +13,13 @@ namespace TeslaOrder.API.Extensions
     public static class ServiceCollectionExtensions
     {
 
+        /// <summary>
+        /// 添加MediatR相关服务和中间件策略
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection AddMediatRServices(this IServiceCollection services)
         {
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(OrderingContextTransactionBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(DomainContextTransactionBehavior<,>));
             return services.AddMediatR(typeof(Order).Assembly, typeof(Program).Assembly);
         }

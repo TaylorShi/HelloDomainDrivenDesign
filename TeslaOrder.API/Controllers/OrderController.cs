@@ -43,7 +43,7 @@ namespace TeslaOrder.API.Controllers
         /// <param name="myOrderQuery"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<List<string>> QueryOrder([FromQuery] MyOrderQuery myOrderQuery)
+        public async Task<List<string>> QueryOrder([FromQuery]TeslaOrderQuery myOrderQuery)
         {
             return await _mediator.Send(myOrderQuery);
         }
