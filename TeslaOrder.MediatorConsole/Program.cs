@@ -11,6 +11,7 @@ namespace TeslaOrder.MediatorConsole
         async static Task Main(string[] args)
         {
             var services = new ServiceCollection();
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TeslaOrderBehavior<,>));
             // 将MediatR添加到容器中，它会扫描我们传入的程序集
             services.AddMediatR(typeof(Program).Assembly);
 
@@ -55,6 +56,20 @@ namespace TeslaOrder.MediatorConsole
         {
             Console.WriteLine($"TeslaOrderCommandHandler2 : {request.CommandName}");
             return Task.FromResult(10L);
+        }
+    }
+
+    internal class TeslaOrderBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+    {
+        public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+        {
+            Console.WriteLine($"TeslaOrderBehavior Start");
+
+            var response = await next();
+
+            Console.WriteLine($"TeslaOrderBehavior End");
+
+            return response;
         }
     }
 }
