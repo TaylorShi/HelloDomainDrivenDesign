@@ -20,4 +20,4 @@
 
 ## 相关文章
 
-* [乘风破浪，遇见最佳跨平台跨终端框架.Net Core/.Net生态 - 浅析ASP.NET Core领域驱动设计，积极应对业务不断增长带来的挑战](https://www.cnblogs.com/taylorshi/p/16794364.html)
+* [乘风破浪，遇见最佳跨平台跨终端框架.Net Core/.Net生态 - 浅析ASP.NET Core领域驱动设计，通过MediatR中介者模式实现CQRS和领域事件](https://www.cnblogs.com/taylorshi/p/16794364.html)
