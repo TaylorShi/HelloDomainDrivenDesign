@@ -29,9 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeslaOrder.BackgroudTasks",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeslaMediatR.API", "TeslaMediatR.API\TeslaMediatR.API.csproj", "{B9A897C0-7FCC-4243-A114-9088A9BB806D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.MediatorCQRS", "TeslaOrder.MediatorConsole\TeslaOrder.MediatorCQRS.csproj", "{3C2210FD-E135-404C-B94E-85EF024EFF9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeslaOrder.MediatorCQRS", "TeslaOrder.MediatorConsole\TeslaOrder.MediatorCQRS.csproj", "{3C2210FD-E135-404C-B94E-85EF024EFF9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaOrder.MediatorEvent", "TeslaOrder.MediatorEvent\TeslaOrder.MediatorEvent.csproj", "{DF4EC7D8-4DD5-43BD-A60D-F26056D3BF86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeslaOrder.MediatorEvent", "TeslaOrder.MediatorEvent\TeslaOrder.MediatorEvent.csproj", "{DF4EC7D8-4DD5-43BD-A60D-F26056D3BF86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

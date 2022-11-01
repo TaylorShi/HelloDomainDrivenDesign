@@ -80,7 +80,7 @@ namespace TeslaOrder.Infrastructure.Core
 
         public virtual async Task<bool> DeleteAsync(TKey id, CancellationToken cancellationToken = default)
         {
-            var entity = await DbContext.FindAsync<TEntity>(id, cancellationToken);
+            var entity = await DbContext.FindAsync<TEntity>(new object[] { id }, cancellationToken);
             if (entity == null)
             {
                 return false;
@@ -96,7 +96,7 @@ namespace TeslaOrder.Infrastructure.Core
 
         public virtual async Task<TEntity> GetAsync(TKey id, CancellationToken cancellationToken = default)
         {
-            return await DbContext.FindAsync<TEntity>(id, cancellationToken);
+            return await DbContext.FindAsync<TEntity>(new object[] { id }, cancellationToken);
         }
     }
 }
